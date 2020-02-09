@@ -11,23 +11,28 @@
   become: true
 - name: clone repository
   git:
-    repo: git@github.com:SplendidX/ChancoinCash.git
-    dest: /root/chancoincash
+    repo: https://github.com/chancoin-core/chancoin-cash.git
+    dest: "{{ chancoin_install_path }}"
     accept_hostkey: yes
-    version: "ya-testnet"
+    version: "{{ chancoin_version }}"
 - name: copy genesis json to server
   template:
     src: files/localchan.json
-    dest: "{{ var.chancoin_install_path }}"
+    dest: "{{ chancoin_install_path }}"
+- name: make sure chancoin install path exists
+  file:
+    path: "{{ chancoin_install_path}}"
+    state: directory
+  become: true
 - name: make all chancoin
   shell: ./run_make.sh
   args:
-    chdir: "{{ var.chancoin_install_path }}"
+    chdir: "{{ chancoin_install_path }}"
 - name: copy chancoin to path
   shell: cp build/bin/chancoin /usr/bin/chancoin
   become: true
   args:
-    chdir: "{{ var.chancoin_install_path }}"
+    chdir: "{{ chancoin_install_path }}"
 - name: init chain
   shell: chancoin init localchan.json
 # TODO Copy address file if it exists

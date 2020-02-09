@@ -5,3 +5,4 @@ create_address: true
 bootnodes: []
 chancoin_user: root
 chancoin_home: /root
+chancoin_version: bootstrap-nodes-pre-desu
