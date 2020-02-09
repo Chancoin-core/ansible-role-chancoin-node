@@ -4,6 +4,11 @@
     name: build-essential
     state: present
   become: true
+- name: install git
+  apt:
+    name: git
+    state: present
+  become: true
 - name: clone repository
   git:
     repo: git@github.com:SplendidX/ChancoinCash.git
@@ -13,16 +18,16 @@
 - name: copy genesis json to server
   template:
     src: files/localchan.json
-    dest: {{ var.chancoin_install_path }}
+    dest: "{{ var.chancoin_install_path }}"
 - name: make all chancoin
   shell: ./run_make.sh
   args:
-    chdir: {{ var.chancoin_install_path }}
+    chdir: "{{ var.chancoin_install_path }}"
 - name: copy chancoin to path
   shell: cp build/bin/chancoin /usr/bin/chancoin
   become: true
   args:
-    chdir: {{ var.chancoin_install_path }}
+    chdir: "{{ var.chancoin_install_path }}"
 - name: init chain
   shell: chancoin init localchan.json
 # TODO Copy address file if it exists
@@ -34,7 +39,7 @@
 - name: copy config file
   template:
     src: templates/config.toml
-    dest: {{chancoin_install_path}}/config.toml
+    dest: "{{chancoin_install_path}}/config.toml"
   become: true
 - name: enable chancoin unit
   shell: systemctl enable chancoin

@@ -36,7 +36,8 @@ Maintained by Chancoin-core team
 
 
 TODO
-* Test this guy in docker
+* Set up chan repo so we can test without forwarding agent
+* Write molecule tests to test existing functionality explicitly
 * Copy over address if present
 * Parameterize bootnodes as var in toml file
 * Add enable_service var with default of true
@@ -47,3 +48,4 @@ DONE
 * Copy over address if present
 * Add install path var with default of /opt/chancoin
 * Are we running with the toml file as config?
+* Set up molecule for testing
