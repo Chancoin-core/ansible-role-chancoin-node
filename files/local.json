@@ -1,0 +1,39 @@
+{
+    "APP_ENV": "prod",
+    "MONGODB_URI": "mongodb://localhost:27017/chanscan",
+    "redis": {
+        "host": "127.0.0.1",
+        "port": 6379,
+        "password": null,
+        "prefix": "ChanScan"
+    },
+    "logs": {
+        "level": "debug"
+    },
+    "WEB3_URI": "http://176.9.251.130:1545",
+    "WEB3_WS_URI": "ws://176.9.251.130:1546",
+    "DEBUG_QUERY": false,
+    "BASE_UNIT": "CHAN",
+    "PORT": 3333,
+    "DEBUG": "express:*",
+    "JWT_SECRET": "$2a$10$zMv2skn0DWEfsZGG91rC/O",
+    "APP_SECRET": "",
+    "SENDGRID_API_KEY": "",
+    "SENDER_EMAIL": "contact@tomochain.com",
+    "BASE_URL": "https://localhost:3000/",
+    "CLIENT_URL": "http://localhost:3000/",
+    "TOMOMASTER_API_URL": "http://167.172.138.91:3001",
+    "BLOCK_PER_EPOCH": 900,
+    "REWARD": 250,
+    "MASTER_NODE_REWARD_PERCENT": 40,
+    "FOUNDATION_REWARD_PERCENT": 10,
+    "VOTER_REWARD_PERCENT": 50,
+    "LIMITED_RECORDS": 10000,
+    "RE_CAPTCHA_SECRET": "RE_CAPTCHA_SECRET",
+    "twitter": {
+        "consumer_key": "",
+        "consumer_secret": "",
+        "access_token_key": "",
+        "access_token_secret": ""
+    }
+}

@@ -1,0 +1,27 @@
+[Unit]
+Description=Chancoin go client
+
+[Service]
+User=varg
+Group=varg
+Type=simple
+ExecStart=/usr/bin/chancoin --config {{chancoin_install_path}}/config.toml
+        --syncmode "full" \
+        --networkid 1 \
+        --port 30303 \
+        --rpc \
+        --rpccorsdomain "" \
+        --rpcaddr 0.0.0.0 \
+        --rpcport 1545 \
+        --rpcvhosts "" \
+        --rpcapi "db,eth,net,web3,personal,debug" \
+        --gcmode "archive" \
+        --ws \
+        --wsaddr 0.0.0.0 \
+        --wsport 1546 \
+        --wsorigins "*" \
+        --mine \
+        --gasprice 2500 2>%h/.ethereum/geth.log
+
+[Install]
+WantedBy=default.target

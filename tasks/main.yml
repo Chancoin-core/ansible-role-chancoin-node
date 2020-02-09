@@ -4,11 +4,6 @@
     name: build-essential
     state: present
   become: true
-- name: install tmux
-  apt:
-    name: tmux
-    state: present
-  become: true
 - name: clone repository
   git:
     repo: git@github.com:SplendidX/ChancoinCash.git
@@ -18,39 +13,28 @@
 - name: copy genesis json to server
   template:
     src: files/localchan.json
-    dest: /root/localchan.json
+    dest: {{ var.chancoin_install_path }}
 - name: make all chancoin
   shell: ./run_make.sh
   args:
-    chdir: /root/chancoincash
+    chdir: {{ var.chancoin_install_path }}
 - name: copy chancoin to path
   shell: cp build/bin/chancoin /usr/bin/chancoin
   become: true
   args:
-    chdir: /root/chancoincash
+    chdir: {{ var.chancoin_install_path }}
 - name: init chain
   shell: chancoin init localchan.json
-  args:
-    chdir: /root
 # TODO Copy address file if it exists
-- name: generate bootnode key
-  shell: ./bootnode -genkey bootnode.key
-  args:
-    chdir: /home/varg/chancoincash/build/bin
-  when: "'boot' in group_names"
-- name: slurp the bootnode address down
-  shell: "./bootnode -nodekey bootnode.key -writeaddress"
-  register: bootnode_address
-  args:
-    chdir: /home/varg/chancoincash/build/bin
-  when: "'boot' in group_names"
-- name: kill tmux session for chan
-  shell: tmux kill-session -t chancoin
-  ignore_errors: true
 - name: create chancoin service unit
   template:
-    src: files/chancoin.service
+    src: templates/chancoin.service
     dest: /etc/systemd/system/chancoin.service
+  become: true
+- name: copy config file
+  template:
+    src: templates/config.toml
+    dest: {{chancoin_install_path}}/config.toml
   become: true
 - name: enable chancoin unit
   shell: systemctl enable chancoin

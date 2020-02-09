@@ -1,2 +1,7 @@
 ---
-# vars file for mold-ansible-role
+chancoin_install_path: /opt/chancoin
+enable_service: true
+create_address: true
+bootnodes: []
+chancoin_user: root
+chancoin_home: /root
