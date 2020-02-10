@@ -1,6 +1,7 @@
 ---
 dependency:
-  name: galaxy
+  name: gilt
+  enabled: true
 driver:
   name: docker
 lint:

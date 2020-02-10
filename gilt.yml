@@ -1,0 +1,3 @@
+---
+- git: https://github.com/gantsign/ansible-role-golang
+  version: v2019.4.0

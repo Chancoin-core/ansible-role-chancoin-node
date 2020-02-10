@@ -1,4 +1,7 @@
 ---
+- name: install go
+  include_role:
+    name: gantsign.golang
 - name: install build-essential
   apt:
     name: build-essential
