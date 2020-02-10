@@ -41,6 +41,8 @@
     chdir: "{{ chancoin_install_path }}"
 - name: init chain
   shell: chancoin init localchan.json
+  args:
+    chdir: "{{ chancoin_install_path }}"
 # TODO Copy address file if it exists
 - name: create chancoin service unit
   template:
