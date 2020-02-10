@@ -5,7 +5,7 @@
 - name: install build-essential
   apt:
     name: build-essential
-    state: present
+    update_cache: true
   become: true
 - name: install git
   apt:
