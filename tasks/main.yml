@@ -2,10 +2,13 @@
 - name: install go
   include_role:
     name: gantsign.golang
+- name: install apt-transport-https
+  apt:
+    name: apt-transport-https
 - name: install build-essential
   apt:
     name: build-essential
-    update_cache: true
+    update_cache: yes
   become: true
 - name: install git
   apt:
