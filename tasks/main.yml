@@ -6,7 +6,7 @@
   apt:
     name: build-essential
     state: present
-    update-cache: true
+    update_cache: true
   become: true
 - name: install git
   apt:
