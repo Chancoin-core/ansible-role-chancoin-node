@@ -6,7 +6,7 @@ galaxy_info:
   author: chazu
   description: chazu
   company: chazuco
-
+  role_name: chancoin_node
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker
