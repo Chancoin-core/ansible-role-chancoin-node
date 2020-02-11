@@ -8,7 +8,7 @@ Type=simple
 ExecStart=/usr/bin/chancoin --config {{chancoin_install_path}}/config.toml
         --syncmode "full" \
         --networkid 1 \
-        --port 30303 \
+        --port {{ chancoin_port }} \
         --rpc \
         --rpccorsdomain "" \
         --rpcaddr 0.0.0.0 \
