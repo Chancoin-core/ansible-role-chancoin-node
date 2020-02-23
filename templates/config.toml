@@ -3,7 +3,7 @@ Verbosity = 3
 NAT = ""
 
 [Eth]
-NetworkId = 88
+NetworkId = 2
 SyncMode = "full"
 LightPeers = 100
 DatabaseCache = 768

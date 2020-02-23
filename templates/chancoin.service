@@ -6,8 +6,8 @@ User=root
 Group=root
 Type=simple
 ExecStart=/usr/bin/chancoin --syncmode "full" \
-        --networkid 1 \
-        --port 30303 \
+        --networkid 2 \
+        --port {{ chancoin_port }} \
         --rpc \
         --rpccorsdomain "" \
         --rpcaddr 0.0.0.0 \

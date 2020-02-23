@@ -39,6 +39,9 @@
   become: true
   args:
     chdir: "{{ chancoin_install_path }}"
+- name: nuke the chain
+  shell: rm -rf ~/.chancoin
+  when: delete_chain is true and really_delete_chain is true
 - name: init chain
   shell: chancoin init localchan.json
   args:
