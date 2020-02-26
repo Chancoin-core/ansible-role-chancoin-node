@@ -21,10 +21,6 @@
     dest: "{{ chancoin_install_path }}"
     accept_hostkey: yes
     version: "{{ chancoin_version }}"
-- name: copy genesis json to server
-  template:
-    src: files/localchan.json
-    dest: "{{ chancoin_install_path }}"
 - name: make sure chancoin install path exists
   file:
     path: "{{ chancoin_install_path}}"
@@ -43,7 +39,7 @@
   shell: rm -rf ~/.chancoin
   when: delete_chain|bool and really_delete_chain|bool
 - name: init chain
-  shell: chancoin init localchan.json
+  shell: "chancoin init {{ chancoin_network }}.json"
   args:
     chdir: "{{ chancoin_install_path }}"
 # TODO Copy address file if it exists
@@ -51,11 +47,6 @@
   template:
     src: templates/chancoin.service
     dest: /etc/systemd/system/chancoin.service
-  become: true
-- name: copy config file
-  template:
-    src: templates/config.toml
-    dest: "{{chancoin_install_path}}/config.toml"
   become: true
 - name: enable chancoin unit
   shell: systemctl enable chancoin
