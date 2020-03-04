@@ -38,10 +38,10 @@
 - name: nuke the chain
   shell: rm -rf ~/.chancoin
   when: delete_chain|bool and really_delete_chain|bool
-- name: init chain
-  shell: "chancoin init {{ chancoin_network }}.json"
-  args:
-    chdir: "{{ chancoin_install_path }}"
+# - name: init chain
+#   shell: "chancoin init genesis/{{ chancoin_network }}.json"
+#   args:
+#     chdir: "{{ chancoin_install_path }}"
 # TODO Copy address file if it exists
 - name: create chancoin service unit
   template:
