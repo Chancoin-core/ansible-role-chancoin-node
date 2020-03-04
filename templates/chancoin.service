@@ -18,7 +18,7 @@ ExecStart=/usr/bin/chancoin --syncmode "full" \
         --wsport 1546 \
         --wsorigins "*" \
         --mine \
-        --gasprice 2500 2>%h/.chancoin/chancoin.log \
+        --gasprice 2500 \
         --chancoin-testnet \
         --bootnodes "{{ bootnode_address }}"
 
