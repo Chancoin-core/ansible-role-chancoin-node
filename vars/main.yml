@@ -8,5 +8,6 @@ chancoin_home: /root
 chancoin_network: testnet
 chancoin_version: bootstrap-nodes-pre-desu
 chancoin_port: 10303
+bootnode_address:
 delete_chain: false
 really_delete_chain: false
